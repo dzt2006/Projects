@@ -1,0 +1,430 @@
+﻿<%@ Page Title="文化科技管理" Language="C#" MasterPageFile="~/Admin/Site_a.master" AutoEventWireup="true" CodeFile="CultureManage.aspx.cs" Inherits="Admin_CultureManage" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style>
+        /* 补充：针对本页的微调样式 */
+        .search-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .search-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .search-item label {
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 0;
+            white-space: nowrap;
+        }
+
+        /* 重写Asp.Net默认Validator样式 */
+        .validator-error {
+            color: var(--cinnabar);
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        /* 图片预览框 */
+        .img-preview-box {
+            width: 120px;
+            height: 120px;
+            background: var(--paper);
+            border: 1px dashed var(--wood);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 0.5rem;
+            position: relative;
+        }
+        
+        .img-preview-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* 默认隐藏，JS统一控制显示 */
+        }
+
+        /* ✅ 优化：拉长编辑删除按钮，解决文字显示不全，保留圆角古风样式 */
+        .action-btns {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .action-btn {
+            padding: 0.4rem 1.1rem; /* 加宽左右内边距，拉长按钮 */
+            border-radius: 8px;
+            border: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+            min-width: 70px; /* 最小宽度，彻底解决文字覆盖 */
+        }
+
+        .action-btn.edit {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3B82F6;
+        }
+
+        .action-btn.delete {
+            background: rgba(196, 30, 58, 0.1);
+            color: var(--cinnabar);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* ✅ 分页区域改造：只保留 < > 左右箭头按钮，放在统计文字最右侧 */
+        .pagination-area {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-count-text {
+            color: var(--ink-light);
+            font-size: 0.9rem;
+        }
+
+        /* 仅保留左右箭头按钮样式，删除所有数字页码 */
+        .page-btn-group {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .page-arrow-btn {
+            padding: 0.4rem 0.9rem;
+            border-radius: 8px;
+            border: 1px solid var(--wood);
+            background: #fff;
+            color: var(--ink-light);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .page-arrow-btn:hover {
+            background: rgba(196, 30, 58, 0.05);
+            border-color: var(--cinnabar);
+            color: var(--cinnabar);
+        }
+
+        .page-arrow-btn.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    </style>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    
+    <!-- 消息提示区域 -->
+    <asp:Panel ID="pnlMsg" runat="server" CssClass="mb-3" Visible="False">
+        <asp:Label ID="lblMessage" runat="server" />
+    </asp:Panel>
+
+    <!-- 1. 搜索筛选区域 -->
+    <div class="ming-card mb-4 animate__animated animate__fadeInDown">
+        <div class="card-header">
+            <h5 class="card-title">
+                <i class="ri-search-line"></i>
+                搜索筛选
+            </h5>
+        </div>
+        <div class="search-row">
+            <div class="search-item">
+                <label for="txtSearchTitle">标题：</label>
+                <asp:TextBox ID="txtSearchTitle" runat="server" CssClass="form-control form-control-ming" style="width: 200px;" />
+            </div>
+            <div class="search-item">
+                <label for="ddlSearchCategory">分类：</label>
+                <asp:DropDownList ID="ddlSearchCategory" runat="server" CssClass="form-select form-control-ming" AppendDataBoundItems="True" style="width: 150px;">
+                    <asp:ListItem Text="全部" Value="" />
+                    <asp:ListItem Text="科技" Value="科技" />
+                    <asp:ListItem Text="小说" Value="小说" />
+                    <asp:ListItem Text="文化" Value="文化" />
+                    <asp:ListItem Text="思想" Value="思想" />
+                </asp:DropDownList>
+            </div>
+            <div class="ms-auto">
+                <asp:Button ID="btnReset" runat="server" Text="重置" CssClass="btn btn-outline-ming me-2" OnClick="BtnReset_Click" CausesValidation="False" />
+                <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-ming" OnClick="BtnSearch_Click" CausesValidation="False">
+                    <i class="ri-search-2-line"></i> 查询
+                </asp:LinkButton>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 新增/编辑表单区域 (默认隐藏) -->
+    <asp:Panel ID="pnlEdit" runat="server" CssClass="mb-4" Visible="False">
+        <div class="ming-card animate__animated animate__zoomIn">
+            <div class="card-header">
+                <h5 class="card-title">
+                    <i class="ri-edit-box-line"></i>
+                    <asp:Literal ID="litEditTitle" runat="server" Text="新增典籍"></asp:Literal>
+                </h5>
+            </div>
+            
+            <asp:HiddenField ID="hfEditId" runat="server" />
+            
+            <div class="row g-4">
+                <!-- 左侧列 -->
+                <div class="col-lg-8">
+                    <!-- 标题：必填 -->
+                    <div class="mb-3">
+                        <label for="txtTitle" class="form-label fw-bold">标题 </label>
+                        <asp:TextBox ID="txtTitle" runat="server" CssClass="form-control form-control-ming" />
+                        <asp:RequiredFieldValidator ID="rfvTitle" runat="server" 
+                            ControlToValidate="txtTitle" 
+                            ErrorMessage="* 请输入标题" 
+                            CssClass="validator-error" 
+                            Display="Dynamic" 
+                            SetFocusOnError="True" />
+                    </div>
+                    
+                    <div class="row">
+                        <!-- 分类：必填 -->
+                        <div class="col-md-4 mb-3">
+                            <label for="txtCategory" class="form-label fw-bold">分类 </label>
+                            <asp:TextBox ID="txtCategory" runat="server" CssClass="form-control form-control-ming" placeholder="如：科技" />
+                            <asp:RequiredFieldValidator ID="rfvCategory" runat="server" 
+                                ControlToValidate="txtCategory" 
+                                ErrorMessage="* 请输入分类" 
+                                CssClass="validator-error" 
+                                Display="Dynamic" 
+                                SetFocusOnError="True" />
+                        </div>
+                        <!-- 作者：必填 -->
+                        <div class="col-md-4 mb-3">
+                            <label for="txtAuthor" class="form-label fw-bold">作者 </label>
+                            <asp:TextBox ID="txtAuthor" runat="server" CssClass="form-control form-control-ming" />
+                            <asp:RequiredFieldValidator ID="rfvAuthor" runat="server" 
+                                ControlToValidate="txtAuthor" 
+                                ErrorMessage="* 请输入作者" 
+                                CssClass="validator-error" 
+                                Display="Dynamic" 
+                                SetFocusOnError="True" />
+                        </div>
+                        <!-- 排序：必填且必须为数字 -->
+                        <div class="col-md-4 mb-3">
+                            <label for="txtSort" class="form-label fw-bold">排序 </label>
+                            <asp:TextBox ID="txtSort" runat="server" CssClass="form-control form-control-ming" Text="0" />
+                            <asp:RequiredFieldValidator ID="rfvSort" runat="server" 
+                                ControlToValidate="txtSort" 
+                                ErrorMessage="* 请输入排序" 
+                                CssClass="validator-error" 
+                                Display="Dynamic" 
+                                SetFocusOnError="True" />
+                            <asp:CompareValidator ID="cvSort" runat="server" 
+                                ControlToValidate="txtSort" 
+                                Operator="DataTypeCheck" 
+                                Type="Integer" 
+                                ErrorMessage="* 排序必须为整数" 
+                                CssClass="validator-error" 
+                                Display="Dynamic" />
+                        </div>
+                    </div>
+
+                    <!-- 内容详情：必填 -->
+                    <div class="mb-3">
+                        <label for="txtContent" class="form-label fw-bold">内容详情 </label>
+                        <asp:TextBox ID="txtContent" runat="server" TextMode="MultiLine" Rows="8" CssClass="form-control form-control-ming" style="font-family: 'KaiTi', sans-serif; line-height: 1.8;" />
+                        <asp:RequiredFieldValidator ID="rfvContent" runat="server" 
+                            ControlToValidate="txtContent" 
+                            ErrorMessage="* 请输入内容详情" 
+                            CssClass="validator-error" 
+                            Display="Dynamic" 
+                            SetFocusOnError="True" />
+                    </div>
+                </div>
+
+                <!-- 右侧列 (封面上传) -->
+                <div class="col-lg-4">
+                    <label class="form-label fw-bold">封面图片 </label>
+                    <div class="mb-3">
+                        <asp:FileUpload ID="fuCover" runat="server" CssClass="form-control form-control-ming" />
+ 
+                        <asp:CustomValidator ID="cvCover" runat="server" 
+                            ControlToValidate="fuCover" 
+                            ErrorMessage="* 请上传封面图片 (仅支持 jpg, png, gif)" 
+                            CssClass="validator-error" 
+                            Display="Dynamic" 
+                            OnServerValidate="cvCover_ServerValidate" 
+                            ValidateEmptyText="True" />
+                        
+                        <div class="img-preview-box mt-3">
+                            <asp:Image ID="imgCurrentCover" runat="server" CssClass="img-preview" />
+                            <span class="text-muted" id="imgPlaceholder" style="font-size: 0.8rem;">暂无封面</span>
+                        </div>
+                        <small class="text-muted d-block mt-2">提示：建议尺寸 400x400，文件不超过 2MB</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 底部操作栏：取消+保存按钮 -->
+            <div class="form-toolbar">
+                <asp:Button ID="btnCancel" runat="server" Text="取消" CssClass="btn btn-outline-ming" OnClick="BtnCancel_Click" CausesValidation="False" />
+                <asp:LinkButton ID="btnSave" runat="server" CssClass="btn btn-ming" OnClick="BtnSave_Click">
+                    <i class="ri-save-line"></i> 保存
+                </asp:LinkButton>
+            </div>
+        </div>
+    </asp:Panel>
+
+    <!-- 3. 列表区域 -->
+    <div class="ming-card animate__animated animate__fadeInUp">
+        <div class="card-header">
+            <h5 class="card-title">
+                <i class="ri-file-list-3-line"></i>
+                文化科技列表
+            </h5>
+            <div>
+                <asp:Button ID="btnAddNew" runat="server" Text="新增典籍" CssClass="btn btn-ming" OnClick="BtnAddNew_Click" CausesValidation="False" />
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <asp:GridView ID="gvCulture" runat="server" 
+                AutoGenerateColumns="False" 
+                AllowPaging="True" 
+                PageSize="5" 
+                DataKeyNames="ID"
+                CssClass="table ming-table align-middle"
+                GridLines="None"
+                OnPageIndexChanging="GvCulture_PageIndexChanging" 
+                OnRowCommand="GvCulture_RowCommand"
+                PagerStyle-CssClass="d-none">
+                
+                <HeaderStyle CssClass="table-light" />
+                <RowStyle CssClass="align-middle" />
+                
+                <Columns>
+                    <asp:BoundField DataField="ID" HeaderText="ID" ItemStyle-Width="60" />
+                    <asp:BoundField DataField="Title" HeaderText="标题" />
+                    <asp:BoundField DataField="Category" HeaderText="分类" />
+                    <asp:BoundField DataField="Author" HeaderText="作者" />
+                    <asp:BoundField DataField="CreateTime" HeaderText="创建时间" DataFormatString="{0:yyyy-MM-dd}" HtmlEncode="False" />
+                    
+                    <asp:TemplateField HeaderText="操作" ItemStyle-Width="180">
+                        <ItemTemplate>
+                            <div class="action-btns">
+                                <asp:Button ID="btnEditRow" runat="server" Text="编辑" CommandName="EditItem" CommandArgument='<%# Eval("ID") %>' CausesValidation="False" CssClass="action-btn edit" />
+                                <asp:Button ID="btnDeleteRow" runat="server" Text="删除" CommandName="DeleteItem" CommandArgument='<%# Eval("ID") %>' CausesValidation="False" OnClientClick="return confirm('确定要删除吗？');" CssClass="action-btn delete" />
+                            </div>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
+        
+        <!-- 右侧仅 < 上一页、> 下一页 箭头按钮 -->
+        <div class="pagination-area">
+            <div class="page-count-text">
+                共 <asp:Literal ID="litTotalCount" runat="server" Text="0" /> 条记录，第 <asp:Literal ID="litCurrentPage" runat="server" Text="1" /> / <asp:Literal ID="litTotalPages" runat="server" Text="1" /> 页
+            </div>
+
+            <div class="page-btn-group">
+                <%-- 上一页 < 按钮 --%>
+                <asp:LinkButton ID="btnPrevPage" runat="server" 
+                    CssClass="page-arrow-btn" 
+                    OnClick="btnPrevPage_Click"
+                    Text="&lt;">
+                </asp:LinkButton>
+
+                <%-- 下一页 > 按钮 --%>
+                <asp:LinkButton ID="btnNextPage" runat="server" 
+                    CssClass="page-arrow-btn" 
+                    OnClick="btnNextPage_Click"
+                    Text="&gt;">
+                </asp:LinkButton>
+            </div>
+        </div>
+    </div>
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="ScriptsPlaceHolder" Runat="Server">
+    <script>
+        // 页面加载和每次异步回发后都自动执行
+        $(function () {
+            initAll();
+        });
+        // 兼容UpdatePanel异步回发
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(initAll);
+
+        function initAll() {
+            // 美化消息提示
+            var $msgPanel = $('#<%= pnlMsg.ClientID %>');
+            var $msg = $('#<%= lblMessage.ClientID %>');
+            
+            if($msgPanel.length > 0 && $msg.text() !== ''){
+                $msgPanel.show();
+                var isError = $msg.text().indexOf('出错') > -1 || $msg.text().indexOf('失败') > -1 || $msg.text().indexOf('只支持') > -1;
+                var icon = isError ? 'ri-error-warning-line' : 'ri-checkbox-circle-line';
+                var color = isError ? '#C41E3A' : '#28A745';
+                
+                $msg.css({
+                    'padding': '1rem 1.5rem',
+                    'border-radius': '12px',
+                    'background': isError ? 'rgba(196, 30, 58, 0.1)' : 'rgba(40, 167, 69, 0.1)',
+                    'color': color,
+                    'border': '1px solid ' + color,
+                    'display': 'flex',
+                    'align-items': 'center',
+                    'gap': '0.5rem'
+                }).prepend('<i class="' + icon + '" style="font-size: 1.2rem;"></i>');
+            }
+
+            // 自动显示已有封面（核心修复）
+            updateImagePreview();
+
+            // 选择文件实时预览
+            $('#<%= fuCover.ClientID %>').change(function () {
+                var file = this.files[0];
+                var $img = $('#<%= imgCurrentCover.ClientID %>');
+                var $placeholder = $('#imgPlaceholder');
+
+                if (file && file.type.startsWith('image/')) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $img.attr('src', e.target.result);
+                        $img.show();
+                        $placeholder.hide();
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // 统一的图片预览函数
+        function updateImagePreview() {
+            var $img = $('#<%= imgCurrentCover.ClientID %>');
+            var $placeholder = $('#imgPlaceholder');
+            // 如果图片有src且不为空，就显示
+            if ($img.attr('src') && $img.attr('src') !== '') {
+                $img.show();
+                $placeholder.hide();
+            } else {
+                $img.hide();
+                $placeholder.show();
+            }
+        }
+    </script>
+</asp:Content>

@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MingDynastyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pwd" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MingBanner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="200" />
+          <Property Name="LinkUrl" Type="nvarchar" MaxLength="200" />
+          <Property Name="Sort" Type="int" />
+        </EntityType>
+        <EntityType Name="MingCulture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="Author" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cover" Type="nvarchar" MaxLength="200" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MingEmperor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReignTitle" Type="nvarchar" MaxLength="30" />
+          <Property Name="TempleName" Type="nvarchar" MaxLength="30" />
+          <Property Name="ReignYears" Type="nvarchar" MaxLength="50" />
+          <Property Name="Intro" Type="nvarchar(max)" />
+          <Property Name="Period" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="Avatar" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="MingEvent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EventYear" Type="int" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="Period" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sort" Type="int" />
+        </EntityType>
+        <EntityType Name="MingFigure">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="20" />
+          <Property Name="BirthYear" Type="int" />
+          <Property Name="DeathYear" Type="int" />
+          <Property Name="IdentityTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="Achievement" Type="nvarchar" MaxLength="200" />
+          <Property Name="Avatar" Type="nvarchar" MaxLength="200" />
+          <Property Name="Intro" Type="nvarchar(max)" />
+          <Property Name="Sort" Type="int" />
+        </EntityType>
+        <EntityType Name="MingMessage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="ReplyContent" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsTop" Type="bit" />
+          <Property Name="IsAnonymous" Type="bit" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="ReplyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MingSystemArticle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="IsTop" Type="bit" />
+          <Property Name="IsShow" Type="bit" />
+          <Property Name="CreateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MingUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pwd" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Avatar" Type="nvarchar" MaxLength="200" />
+          <Property Name="RegisterTime" Type="datetime" />
+          <Property Name="LastLoginTime" Type="datetime" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <Association Name="FK__MingEvent__EmpID__4316F928">
+          <End Role="MingEmperor" Type="Self.MingEmperor" Multiplicity="0..1" />
+          <End Role="MingEvent" Type="Self.MingEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MingEmperor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MingEvent">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MingMessa__UserI__571DF1D5">
+          <End Role="MingUser" Type="Self.MingUser" Multiplicity="0..1" />
+          <End Role="MingMessage" Type="Self.MingMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MingUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MingMessage">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MingDynastyDBModelStoreContainer">
+          <EntitySet Name="AdminUser" EntityType="Self.AdminUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MingBanner" EntityType="Self.MingBanner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MingCulture" EntityType="Self.MingCulture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MingEmperor" EntityType="Self.MingEmperor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MingEvent" EntityType="Self.MingEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MingFigure" EntityType="Self.MingFigure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MingMessage" EntityType="Self.MingMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MingSystemArticle" EntityType="Self.MingSystemArticle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MingUser" EntityType="Self.MingUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__MingEvent__EmpID__4316F928" Association="Self.FK__MingEvent__EmpID__4316F928">
+            <End Role="MingEmperor" EntitySet="MingEmperor" />
+            <End Role="MingEvent" EntitySet="MingEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MingMessa__UserI__571DF1D5" Association="Self.FK__MingMessa__UserI__571DF1D5">
+            <End Role="MingUser" EntitySet="MingUser" />
+            <End Role="MingMessage" EntitySet="MingMessage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MingDynastyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pwd" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MingBanner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LinkUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MingCulture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cover" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MingEmperor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReignTitle" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TempleName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ReignYears" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Intro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Period" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="Avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MingEvent" Relationship="Self.FK__MingEvent__EmpID__4316F928" FromRole="MingEmperor" ToRole="MingEvent" />
+        </EntityType>
+        <EntityType Name="MingEvent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EventYear" Type="Int32" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Period" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+          <NavigationProperty Name="MingEmperor" Relationship="Self.FK__MingEvent__EmpID__4316F928" FromRole="MingEvent" ToRole="MingEmperor" />
+        </EntityType>
+        <EntityType Name="MingFigure">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BirthYear" Type="Int32" />
+          <Property Name="DeathYear" Type="Int32" />
+          <Property Name="IdentityTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Achievement" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Intro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MingMessage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReplyContent" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsTop" Type="Boolean" />
+          <Property Name="IsAnonymous" Type="Boolean" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="ReplyTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MingUser" Relationship="Self.FK__MingMessa__UserI__571DF1D5" FromRole="MingMessage" ToRole="MingUser" />
+        </EntityType>
+        <EntityType Name="MingSystemArticle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsTop" Type="Boolean" />
+          <Property Name="IsShow" Type="Boolean" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MingUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pwd" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterTime" Type="DateTime" Precision="3" />
+          <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="MingMessage" Relationship="Self.FK__MingMessa__UserI__571DF1D5" FromRole="MingUser" ToRole="MingMessage" />
+        </EntityType>
+        <Association Name="FK__MingEvent__EmpID__4316F928">
+          <End Role="MingEmperor" Type="Self.MingEmperor" Multiplicity="0..1" />
+          <End Role="MingEvent" Type="Self.MingEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MingEmperor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MingEvent">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MingMessa__UserI__571DF1D5">
+          <End Role="MingUser" Type="Self.MingUser" Multiplicity="0..1" />
+          <End Role="MingMessage" Type="Self.MingMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MingUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MingMessage">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MingDynastyDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminUser" EntityType="Self.AdminUser" />
+          <EntitySet Name="MingBanner" EntityType="Self.MingBanner" />
+          <EntitySet Name="MingCulture" EntityType="Self.MingCulture" />
+          <EntitySet Name="MingEmperor" EntityType="Self.MingEmperor" />
+          <EntitySet Name="MingEvent" EntityType="Self.MingEvent" />
+          <EntitySet Name="MingFigure" EntityType="Self.MingFigure" />
+          <EntitySet Name="MingMessage" EntityType="Self.MingMessage" />
+          <EntitySet Name="MingSystemArticle" EntityType="Self.MingSystemArticle" />
+          <EntitySet Name="MingUser" EntityType="Self.MingUser" />
+          <AssociationSet Name="FK__MingEvent__EmpID__4316F928" Association="Self.FK__MingEvent__EmpID__4316F928">
+            <End Role="MingEmperor" EntitySet="MingEmperor" />
+            <End Role="MingEvent" EntitySet="MingEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MingMessa__UserI__571DF1D5" Association="Self.FK__MingMessa__UserI__571DF1D5">
+            <End Role="MingUser" EntitySet="MingUser" />
+            <End Role="MingMessage" EntitySet="MingMessage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MingDynastyDBModelStoreContainer" CdmEntityContainer="MingDynastyDBEntities">
+          <EntitySetMapping Name="AdminUser">
+            <EntityTypeMapping TypeName="MingDynastyDBModel.AdminUser">
+              <MappingFragment StoreEntitySet="AdminUser">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MingBanner">
+            <EntityTypeMapping TypeName="MingDynastyDBModel.MingBanner">
+              <MappingFragment StoreEntitySet="MingBanner">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MingCulture">
+            <EntityTypeMapping TypeName="MingDynastyDBModel.MingCulture">
+              <MappingFragment StoreEntitySet="MingCulture">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MingEmperor">
+            <EntityTypeMapping TypeName="MingDynastyDBModel.MingEmperor">
+              <MappingFragment StoreEntitySet="MingEmperor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="ReignTitle" ColumnName="ReignTitle" />
+                <ScalarProperty Name="TempleName" ColumnName="TempleName" />
+                <ScalarProperty Name="ReignYears" ColumnName="ReignYears" />
+                <ScalarProperty Name="Intro" ColumnName="Intro" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MingEvent">
+            <EntityTypeMapping TypeName="MingDynastyDBModel.MingEvent">
+              <MappingFragment StoreEntitySet="MingEvent">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+                <ScalarProperty Name="EventYear" ColumnName="EventYear" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MingFigure">
+            <EntityTypeMapping TypeName="MingDynastyDBModel.MingFigure">
+              <MappingFragment StoreEntitySet="MingFigure">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="BirthYear" ColumnName="BirthYear" />
+                <ScalarProperty Name="DeathYear" ColumnName="DeathYear" />
+                <ScalarProperty Name="IdentityTitle" ColumnName="IdentityTitle" />
+                <ScalarProperty Name="Achievement" ColumnName="Achievement" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Intro" ColumnName="Intro" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MingMessage">
+            <EntityTypeMapping TypeName="MingDynastyDBModel.MingMessage">
+              <MappingFragment StoreEntitySet="MingMessage">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ReplyContent" ColumnName="ReplyContent" />
+                <ScalarProperty Name="IsTop" ColumnName="IsTop" />
+                <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ReplyTime" ColumnName="ReplyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MingSystemArticle">
+            <EntityTypeMapping TypeName="MingDynastyDBModel.MingSystemArticle">
+              <MappingFragment StoreEntitySet="MingSystemArticle">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="IsTop" ColumnName="IsTop" />
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MingUser">
+            <EntityTypeMapping TypeName="MingDynastyDBModel.MingUser">
+              <MappingFragment StoreEntitySet="MingUser">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="RegisterTime" ColumnName="RegisterTime" />
+                <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

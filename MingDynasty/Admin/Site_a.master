@@ -1,0 +1,103 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site_a.master.cs" Inherits="Admin_Site" %>
+
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大明后台 · 文渊阁</title>
+    <link rel="icon" type="image/x-icon" href="<%= ResolveUrl("~/favicon.ico") %>">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/css/sweetalert2.min.css" rel="stylesheet">
+    <link href="~/css/animate.min.css" rel="stylesheet">
+    <link href="~/css/vis-timeline-graph2d.min.css" rel="stylesheet">
+    
+    <script src="../js/echarts.js"></script>
+    
+    <style>:root{--paper:#FAF7F2;--wood:#D7CCC8;--wood-dark:#8D6E63;--cinnabar:#C41E3A;--cinnabar-light:#E57373;--ink:#333;--ink-light:#666;--shadow:0 4px 20px rgba(0,0,0,0.05)}*{margin:0;padding:0;box-sizing:border-box}body{font-family:"KaiTi","Microsoft YaHei","SimSun",sans-serif;background-color:var(--paper);color:var(--ink);min-height:100vh;padding-top:70px;padding-bottom:50px}.top-nav{position:fixed;top:0;left:0;right:0;height:70px;background:#fff;border-bottom:1px solid var(--wood);z-index:1000;display:flex;align-items:center;padding:0 2rem;gap:2rem}.logo{font-family:"LiSu","KaiTi",cursive;font-size:1.8rem;color:var(--cinnabar);display:flex;align-items:center;gap:.5rem;text-decoration:none;white-space:nowrap}.nav-tabs{display:flex;gap:.5rem;flex-grow:1;overflow-x:auto;padding-bottom:1px}.nav-tab{font-size:1.05rem;font-weight:500;padding:.6rem 1.2rem;border-radius:12px 12px 0 0;color:var(--ink-light);text-decoration:none;transition:all .3s ease;display:flex;align-items:center;gap:.5rem;white-space:nowrap;border:1px solid transparent;border-bottom:none;margin-bottom:-1px}.nav-tab:hover{background:rgba(196,30,58,.05);color:var(--cinnabar);text-decoration:none}.nav-tab.active{background:var(--paper);color:var(--cinnabar);border-color:var(--wood);border-bottom-color:var(--paper);font-weight:600}.user-area{display:flex;align-items:center;gap:1rem;white-space:nowrap}.user-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--wood-dark),var(--wood));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.1rem;object-fit:cover;border:2px solid var(--wood)}.bottom-bar{position:fixed;bottom:0;left:0;right:0;height:50px;background:#fff;border-top:1px solid var(--wood);z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:0 2rem}.status-info{color:var(--ink-light);font-size:.9rem}.quick-actions{display:flex;gap:1rem}.main-content{padding:2rem;min-height:calc(100vh - 120px)}.ming-card{background:#fff;border-radius:20px;box-shadow:var(--shadow);padding:1.5rem;transition:all .3s ease;border:1px solid transparent;margin-bottom:1.5rem}.ming-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.08);border-color:var(--wood)}.card-header{background:transparent;border-bottom:1px solid var(--wood);padding:0 0 1rem 0;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}.card-title{font-family:"LiSu","KaiTi",cursive;font-size:1.3rem;color:var(--ink);margin:0;display:flex;align-items:center;gap:.5rem}.btn-ming{background:var(--cinnabar);color:#fff;border:none;border-radius:20px;padding:.5rem 1.2rem;font-weight:500;transition:all .3s ease;white-space:nowrap;display:inline-flex;align-items:center;gap:.4rem}.btn-ming:hover{background:var(--cinnabar-light);color:#fff;transform:translateY(-2px)}.btn-ming-sm{background:var(--cinnabar);color:#fff;border:none;border-radius:16px;padding:.35rem .9rem;font-weight:500;font-size:.875rem;transition:all .3s ease;white-space:nowrap;display:inline-flex;align-items:center;gap:.3rem}.btn-ming-sm:hover{background:var(--cinnabar-light);color:#fff;transform:translateY(-1px)}.btn-ming-lg{background:var(--cinnabar);color:#fff;border:none;border-radius:24px;padding:.8rem 2rem;font-weight:600;font-size:1.2rem;line-height:1.4;transition:all .3s ease;text-align:center;min-width:120px;white-space:nowrap;display:inline-flex;flex-direction:column;align-items:center;gap:.2rem}.btn-ming-lg:hover{background:var(--cinnabar-light);color:#fff;transform:translateY(-2px);box-shadow:0 6px 16px rgba(196,30,58,.25)}.btn-outline-ming{color:var(--cinnabar);border:1px solid var(--cinnabar);background:transparent;border-radius:20px;padding:.5rem 1.2rem;transition:all .3s ease;white-space:nowrap;display:inline-flex;align-items:center;gap:.4rem}.btn-outline-ming:hover{background:var(--cinnabar);color:#fff}.stat-card{text-align:center;position:relative;overflow:hidden}.stat-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--cinnabar),var(--cinnabar-light));border-radius:0 20px 20px 0}.stat-icon{font-size:2.5rem;margin-bottom:.8rem;color:var(--cinnabar);animation:float 3s ease-in-out infinite}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}.stat-number{font-size:2.2rem;font-weight:bold;color:var(--ink);margin-bottom:.3rem;background:linear-gradient(135deg,var(--cinnabar),var(--wood-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.stat-label{color:var(--ink-light);font-size:.9rem}.ming-table{color:var(--ink);margin-bottom:0}.ming-table thead th{border-bottom:2px solid var(--wood);color:var(--ink-light);font-weight:600;border-top:none;background:transparent}.ming-table tbody tr{transition:all .2s ease}.ming-table tbody tr:hover{background:rgba(196,30,58,.03)}.ming-table td,.ming-table th{border-color:var(--wood);vertical-align:middle;padding:1.2rem 1rem}.action-btns{display:flex;gap:.5rem}.action-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:none;transition:all .2s ease;cursor:pointer;font-size:1.1rem}.action-btn.edit{background:rgba(59,130,246,.1);color:#3B82F6}.action-btn.delete{background:rgba(196,30,58,.1);color:var(--cinnabar)}.action-btn:hover{transform:scale(1.15);box-shadow:0 4px 12px rgba(0,0,0,.1)}.pagination-area{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--wood);display:flex;justify-content:space-between;align-items:center}.pagination{margin-bottom:0}.page-link{border-radius:8px!important;margin:0 .2rem;border:1px solid var(--wood);color:var(--ink-light);padding:.5rem 1rem;transition:all .2s ease}.page-link:hover{background:rgba(196,30,58,.05);border-color:var(--cinnabar);color:var(--cinnabar)}.page-item.active .page-link{background:var(--cinnabar);border-color:var(--cinnabar);color:#fff}.page-item.disabled .page-link{background:var(--wood);border-color:var(--wood);color:var(--ink-light);opacity:.5}.badge{padding:.3rem .8rem;border-radius:12px;font-size:.8rem;font-weight:500}.badge.bg-danger{background-color:var(--cinnabar)!important}.chart-container{width:100%;height:320px}@media (max-width:992px){.top-nav{padding:0 1rem;gap:1rem}.nav-tabs{display:none}.main-content{padding:1rem}.bottom-bar{padding:0 1rem}}</style>
+    
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        
+        <div class="top-nav">
+            <a href="Index.aspx" class="logo">
+                <i class="ri-empress-line"></i>
+                文渊阁
+            </a>
+            
+            <div class="nav-tabs">
+                <a href="Index.aspx" class="nav-tab" id="tab-index">
+                    <i class="ri-dashboard-line"></i>
+                    数据大屏
+                </a>
+                <a href="EmperorManage.aspx" class="nav-tab" id="tab-emperor">
+                    <i class="ri-vip-crown-line"></i>
+                    帝王
+                </a>
+                <a href="EventManage.aspx" class="nav-tab" id="tab-event">
+                    <i class="ri-history-line"></i>
+                    事件
+                </a>
+                <a href="FigureManage.aspx" class="nav-tab" id="tab-figure">
+                    <i class="ri-user-star-line"></i>
+                    名臣
+                </a>
+                <a href="SystemManage.aspx" class="nav-tab" id="tab-system">
+                    <i class="ri-government-line"></i>
+                    典章
+                </a>
+                <a href="CultureManage.aspx" class="nav-tab" id="tab-culture">
+                    <i class="ri-brush-line"></i>
+                    文化
+                </a>
+                <a href="CarouselManage.aspx" class="nav-tab" id="tab-carousel">
+                    <i class="ri-slideshow-line"></i>
+                    轮播
+                </a>
+                <a href="MessageManage.aspx" class="nav-tab" id="tab-message">
+                    <i class="ri-quill-pen-line"></i>
+                    留言
+                </a>
+                <a href="UserManage.aspx" class="nav-tab" id="tab-user">
+                    <i class="ri-user-3-line"></i>
+                    用户
+                </a>
+            </div>
+            
+            <div class="user-area">
+                <%-- 返回前台按钮 --%>
+                <a href="~/Page/Index.aspx" runat="server" class="btn btn-sm btn-outline-ming">
+                    <i class="ri-home-line"></i>
+                    返回前台
+                </a>
+                
+                
+                <asp:LinkButton ID="lbtnLogout" runat="server" CssClass="btn btn-sm btn-outline-ming" OnClick="lbtnLogout_Click">
+                    退出
+                </asp:LinkButton>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+        </div>
+    </form>
+    
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/sweetalert2.all.min.js"></script>
+    <script src="../js/moment.min.js"></script>
+    <script src="../js/vis-timeline-graph2d.min.js"></script>
+    <script src="../js/vue.global.js"></script>
+    
+    <script>$(function () { const c = window.location.pathname; $(".nav-tab").each(function () { const h = $(this).attr("href"); h && c.includes(h) && $(this).addClass("active") }) }); function showSuccess(m) { Swal.fire({ icon: "success", title: m, timer: 1500, showConfirmButton: !1, toast: !0, position: "top-right", background: "#fff", iconColor: "#C41E3A" }) } function confirmDelete(n) { return Swal.fire({ title: "确认删除", text: `确定要删除「${n}」吗？`, icon: "warning", showCancelButton: !0, confirmButtonColor: "#C41E3A", cancelButtonColor: "#666", confirmButtonText: "确定删除", cancelButtonText: "取消" }).then(r => r.isConfirmed) } function animateNumber(e, t, d = 1500) { let c = 0; const i = t / (d / 16), s = setInterval(() => { c += i; c >= t ? ($(e).text(t), clearInterval(s)) : $(e).text(Math.floor(c)) }, 16) }</script>
+    
+    <%-- 【新增】页面专属脚本占位符 --%>
+    <asp:ContentPlaceHolder ID="ScriptsPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+</body>
+</html>

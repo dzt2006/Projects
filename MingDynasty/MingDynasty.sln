@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.37206.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MingDynasty", ".", "{8DC1BD0A-A66E-4F0F-94AA-5DB899D87D2A}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_54727"
+		Debug.AspNetCompiler.PhysicalPath = "..\MingDynasty\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54727\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_54727"
+		Release.AspNetCompiler.PhysicalPath = "..\MingDynasty\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54727\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "54727"
+		SlnRelativePath = "..\MingDynasty\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8DC1BD0A-A66E-4F0F-94AA-5DB899D87D2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DC1BD0A-A66E-4F0F-94AA-5DB899D87D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C3100FC4-1F40-41E9-B7CD-4C671650EC45}
+	EndGlobalSection
+EndGlobal
