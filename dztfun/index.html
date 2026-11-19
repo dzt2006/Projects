@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<title>邓泽廷的小站 · 慢慢记，慢慢活</title>
+
+<link rel="stylesheet" href="assets/fonts/lxgw-wenkai/lxgwwenkai-regular.css">
+<link rel="stylesheet" href="assets/fonts/lxgw-wenkai/lxgwwenkai-bold.css">
+<link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body class="home">
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+
+  <nav class="nav">
+    <a class="nav-brand" href="index.html">dztfun<span>.cyou</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="active"><i class="fa-solid fa-house"></i>首页</a>
+      <a href="daily.html"><i class="fa-solid fa-cloud-sun"></i>日常</a>
+      <a href="logs.html"><i class="fa-solid fa-pen-clip"></i>日志</a>
+      <a href="poems.html"><i class="fa-solid fa-quote-left"></i>撷句</a>
+      <a href="about.html"><i class="fa-solid fa-id-card"></i>关于</a>
+    </div>
+  </nav>
+
+  <main class="page page-home">
+
+    <!-- ================= 门面 ================= -->
+    <header class="home-hero reveal" style="--d:.08s">
+      <div class="hero-main">
+        <p class="hero-over"><i class="fa-solid fa-store"></i>邓泽廷的小站 · 2026 年 11 月开张</p>
+        <h1 class="hero-title">慢慢记，<span class="accent">慢慢活。</span></h1>
+        <p class="hero-sub">一家开在云边的小卖部：货架上摆着普通的日子，窗子里留着一点天光。没有广告，没有弹窗，只有一些想认真做好的东西。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#corners"><i class="fa-solid fa-compass"></i> 开始逛</a>
+          <a class="btn btn-ghost" href="about.html"><i class="fa-solid fa-id-card"></i> 认识我</a>
+        </div>
+        <p class="hero-verse">人间有味是清欢。<cite>苏轼 · 浣溪沙</cite></p>
+      </div>
+      <div class="hero-side">
+        <div class="hero-sign" aria-hidden="true">
+          <span class="sign-rope"></span>
+          <div class="sign-board"><b>拾光</b><span>云边小卖部</span></div>
+        </div>
+        <div class="almanac" id="hero-almanac"></div>
+      </div>
+    </header>
+
+    <!-- ================= 云边货架 ================= -->
+    <section class="section shelf-section">
+      <div class="shelf-panel reveal" style="--d:.14s">
+        <div class="shelf-head">
+          <h3><i class="fa-solid fa-store"></i>货架 · 近日拾遗</h3>
+          <p class="shelf-count" id="shelf-count"></p>
+        </div>
+        <div class="shelf" id="shelf"></div>
+        <p class="shelf-note">货架不卖别的，只摆慢慢过过的日子。风一吹，木牌就轻轻晃；伸手翻一翻，翻到哪天，就回到哪天。</p>
+      </div>
+    </section>
+
+    <!-- ================= 小站档案 ================= -->
+    <section class="section">
+      <div class="site-panel reveal" style="--d:.12s">
+        <div class="site-about">
+          <h3><i class="fa-solid fa-mug-saucer"></i>关于这个小站</h3>
+          <p>
+            它由一台小小的服务器、一份证书和一点点耐心搭起来。<br>
+            没有广告，没有弹窗，只有一些想认真做好的东西。
+          </p>
+          <p>
+            页面是手写的静态页，字是霞鹜文楷，<br>
+            玻璃后面留着一点天光，慢慢看，不着急。
+          </p>
+        </div>
+        <ul class="site-facts">
+          <li><span>小站名字</span><b>拾光 · 云边小卖部</b></li>
+          <li><span>页面形式</span><b>手写静态页 · 无框架</b></li>
+          <li><span>落脚之处</span><b>nginx · Ubuntu 24.04</b></li>
+          <li><span>正文字体</span><b>霞鹜文楷 · 楷体回退</b></li>
+          <li><span>开张日子</span><b>2026 年 11 月</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= 四个角落 ================= -->
+    <section id="corners" class="section">
+      <div class="section-head reveal" style="--d:.1s">
+        <h2>四个角落</h2>
+        <p><i class="fa-solid fa-seedling"></i>地方不大，慢慢长大</p>
+      </div>
+
+      <div class="cards">
+        <a class="card reveal" style="--d:.16s" href="daily.html">
+          <div class="ico i-mint"><i class="fa-solid fa-cloud-sun"></i></div>
+          <h3>日常 · 拾光</h3>
+          <p>天气、心情，和一小段日子</p>
+        </a>
+
+        <a class="card reveal" style="--d:.24s" href="logs.html">
+          <div class="ico i-sky"><i class="fa-solid fa-pen-clip"></i></div>
+          <h3>日志 · 札记</h3>
+          <p>做过的事，留个底</p>
+        </a>
+
+        <a class="card reveal" style="--d:.32s" href="poems.html">
+          <div class="ico i-peach"><i class="fa-solid fa-quote-left"></i></div>
+          <h3>撷句 · 拾遗</h3>
+          <p>诗词、语录、文章片段</p>
+        </a>
+
+        <a class="card reveal" style="--d:.4s" href="about.html">
+          <div class="ico i-lav"><i class="fa-solid fa-id-card"></i></div>
+          <h3>关于 · 识我</h3>
+          <p>邓泽廷，和这个小站</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ================= 近来 ================= -->
+    <section id="recent" class="section">
+      <div class="section-head reveal" style="--d:.1s">
+        <h2>近来</h2>
+        <p><i class="fa-regular fa-clock"></i>最近写下的三笔</p>
+      </div>
+
+      <div class="recent">
+        <a class="reveal" style="--d:.16s" href="logs.html#e-1118">
+          <span class="r-date">2026-11-18</span>
+          <span class="r-kind k-log">日志</span>
+          <span class="r-title">小站改版记</span>
+          <i class="fa-solid fa-arrow-right r-go"></i>
+        </a>
+        <a class="reveal" style="--d:.24s" href="daily.html#e-1116">
+          <span class="r-date">2026-11-16</span>
+          <span class="r-kind k-daily">日常</span>
+          <span class="r-title">楼下桂花开得正好</span>
+          <i class="fa-solid fa-arrow-right r-go"></i>
+        </a>
+        <a class="reveal" style="--d:.32s" href="daily.html#e-1109">
+          <span class="r-date">2026-11-09</span>
+          <span class="r-kind k-daily">日常</span>
+          <span class="r-title">煮了一壶茶</span>
+          <i class="fa-solid fa-arrow-right r-go"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- ================= 今日撷句 ================= -->
+    <section id="featured" class="section">
+      <div class="section-head reveal" style="--d:.1s">
+        <h2>今日撷句</h2>
+        <p><i class="fa-solid fa-quote-left"></i>每天换一句，来自撷句集</p>
+      </div>
+      <div id="featured-quote"></div>
+    </section>
+
+    <footer class="footer reveal" style="--d:.25s">
+      <div class="line"></div>
+      <p class="footer-verse">行到水穷处，坐看云起时。</p>
+      <p class="footer-note">王维 · 《终南别业》</p>
+      <p class="footer-copy">© <span id="year"></span> 邓泽廷 · 拾光小站</p>
+    </footer>
+
+  </main>
+
+  <script src="assets/main.js"></script>
+  <script src="assets/quotes.js"></script>
+  <script src="assets/days.js"></script>
+
+</body>
+</html>

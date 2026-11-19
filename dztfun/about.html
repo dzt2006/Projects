@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<title>关于 · 识我 · dztfun.cyou</title>
+
+<link rel="stylesheet" href="assets/fonts/lxgw-wenkai/lxgwwenkai-regular.css">
+<link rel="stylesheet" href="assets/fonts/lxgw-wenkai/lxgwwenkai-bold.css">
+<link rel="stylesheet" href="assets/fonts/ma-shan-zheng/index.css">
+<link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+
+  <nav class="nav">
+    <a class="nav-brand" href="index.html">dztfun<span>.cyou</span></a>
+    <div class="nav-links">
+      <a href="index.html"><i class="fa-solid fa-house"></i>首页</a>
+      <a href="daily.html"><i class="fa-solid fa-cloud-sun"></i>日常</a>
+      <a href="logs.html"><i class="fa-solid fa-pen-clip"></i>日志</a>
+      <a href="poems.html"><i class="fa-solid fa-quote-left"></i>撷句</a>
+      <a href="about.html" class="active"><i class="fa-solid fa-id-card"></i>关于</a>
+    </div>
+  </nav>
+
+  <main class="page page-about">
+
+    <header class="page-head reveal" style="--d:.12s">
+      <h1>关于 · <span class="accent">识我</span></h1>
+      <p>认识一下，慢慢来。</p>
+    </header>
+
+    <div class="profile-layout">
+
+      <aside class="profile reveal" style="--d:.08s">
+        <div class="avatar-wrap">
+          <img class="avatar" src="assets/avatar.jpg" alt="邓泽廷的头像" decoding="async">
+        </div>
+        <h1 class="profile-name">邓泽廷</h1>
+        <p class="profile-bio">慢慢记，慢慢活。<br>云边拾光，山水一程。</p>
+
+        <a class="btn btn-ghost profile-btn" href="mailto:430249441@qq.com">
+          <i class="fa-solid fa-envelope"></i> 给我写信
+        </a>
+
+        <div class="profile-stats" id="profile-stats"></div>
+
+        <div class="profile-verse">
+          <p>且将新火试新茶，诗酒趁年华。</p>
+          <cite>苏轼 · 望江南</cite>
+        </div>
+
+        <div class="profile-now" id="profile-now"></div>
+
+        <ul class="profile-meta">
+          <li><i class="fa-solid fa-graduation-cap"></i><span>学生</span></li>
+          <li><i class="fa-solid fa-location-dot"></i><span>长沙</span></li>
+          <li><i class="fa-solid fa-envelope"></i><a href="mailto:430249441@qq.com">430249441@qq.com</a></li>
+          <li><i class="fa-brands fa-github"></i><a href="https://github.com/dzt2006" target="_blank" rel="noopener">github.com/dzt2006</a></li>
+        </ul>
+      </aside>
+
+      <section class="readme reveal" style="--d:.16s">
+        <h2 class="readme-title">云边有个小卖部，货架上摆着普通的日子。</h2>
+
+        <div class="readme-body">
+          <div class="readme-text">
+            <blockquote>
+              云边有个小卖部，货架上摆着天空的蓝、晚风的温柔，和一点点没说出口的心事。
+              <cite>—— 《云边有个小卖部》</cite>
+            </blockquote>
+            <p>日子像云，聚了又散；人像风，来了又走。但总有些想把生活过得亮晶晶的念头，会被天空悄悄收好。</p>
+            <p class="soft">Nice to meet you. 愿你每一天，云很轻，天很蓝。</p>
+          </div>
+          <img class="readme-img" src="assets/clouds.jpg" alt="云边的小卖部" decoding="async">
+        </div>
+
+        <div class="readme-tags">
+          <span class="tag"><i class="fa-solid fa-scroll t-peach"></i>诗词</span>
+          <span class="tag"><i class="fa-solid fa-pen-nib t-sky"></i>记录</span>
+          <span class="tag"><i class="fa-solid fa-mug-hot t-mint"></i>慢生活</span>
+          <span class="tag"><i class="fa-solid fa-code t-lav"></i>折腾代码</span>
+        </div>
+
+        <p class="readme-more">这里不追热点，不赶时间。写下的每一笔，都是给以后的自己留的路标：哪天闻过桂花，哪天煮过茶，哪天被一句诗轻轻接住。</p>
+
+        <div class="readme-drawer">
+          <div class="drawer-head">
+            <h3><i class="fa-solid fa-leaf"></i>四时笺 · 替季节留一句话</h3>
+            <span class="drawer-note">应季的那枚，会自己亮起来</span>
+          </div>
+          <div class="seasons" id="seasons"></div>
+
+          <div class="drawer-head">
+            <h3><i class="fa-solid fa-seedling"></i>掌柜的心愿单</h3>
+            <span class="drawer-note" id="wish-count"></span>
+          </div>
+          <ul class="wish-list" id="wish-list"></ul>
+        </div>
+      </section>
+
+    </div>
+
+    <section class="section about-card reveal" style="--d:.2s">
+      <h3><i class="fa-solid fa-mug-saucer"></i>几句补充</h3>
+      <p class="serif">
+        一个喜欢把日子过慢的人。<br>
+        现在长沙念书，爱诗词，爱记录，<br>
+        偶尔写写代码、折腾折腾小站。
+      </p>
+      <p>
+        相信「人间有味是清欢」，<br>
+        所以把这里收拾成一个安静的小角落，<br>
+        放日常、放日志、放喜欢的句子。
+      </p>
+      <div class="tags">
+        <span class="tag"><i class="fa-solid fa-scroll t-peach"></i>诗词爱好者</span>
+        <span class="tag"><i class="fa-solid fa-pen-nib t-sky"></i>偶尔记录</span>
+        <span class="tag"><i class="fa-solid fa-mug-hot t-mint"></i>慢生活</span>
+        <span class="tag"><i class="fa-solid fa-code t-lav"></i>折腾代码</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="about-card reveal" style="--d:.15s">
+        <h3><i class="fa-solid fa-envelope"></i>联系我</h3>
+        <p>有想法的话，欢迎来聊聊。</p>
+        <div class="contact">
+          <a href="mailto:430249441@qq.com"><i class="fa-solid fa-envelope"></i>430249441@qq.com</a>
+          <a href="https://github.com/dzt2006" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i>github.com/dzt2006</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="about-card reveal" style="--d:.15s">
+        <h3><i class="fa-solid fa-mug-saucer"></i>关于这个小站</h3>
+        <p>
+          它由一台小小的服务器、一份证书和一点点耐心搭起来。<br>
+          没有广告，没有弹窗，只有一些想认真做好的东西。
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer reveal" style="--d:.25s">
+      <div class="line"></div>
+      <p class="footer-verse">行到水穷处，坐看云起时。</p>
+      <p class="footer-note">王维 · 《终南别业》</p>
+      <p class="footer-copy">© <span id="year"></span> 邓泽廷 · 拾光小站</p>
+    </footer>
+
+  </main>
+
+  <script src="assets/main.js"></script>
+  <script src="assets/quotes.js"></script>
+  <script src="assets/days.js"></script>
+
+</body>
+</html>

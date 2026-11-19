@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<title>撷句 · 拾遗 · dztfun.cyou</title>
+
+<link rel="stylesheet" href="assets/fonts/lxgw-wenkai/lxgwwenkai-regular.css">
+<link rel="stylesheet" href="assets/fonts/lxgw-wenkai/lxgwwenkai-bold.css">
+<link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+
+  <nav class="nav">
+    <a class="nav-brand" href="index.html">dztfun<span>.cyou</span></a>
+    <div class="nav-links">
+      <a href="index.html"><i class="fa-solid fa-house"></i>首页</a>
+      <a href="daily.html"><i class="fa-solid fa-cloud-sun"></i>日常</a>
+      <a href="logs.html"><i class="fa-solid fa-pen-clip"></i>日志</a>
+      <a href="poems.html" class="active"><i class="fa-solid fa-quote-left"></i>撷句</a>
+      <a href="about.html"><i class="fa-solid fa-id-card"></i>关于</a>
+    </div>
+  </nav>
+
+  <main class="page page-poems">
+
+    <header class="page-head reveal" style="--d:.05s">
+      <h1>撷句 · <span class="accent">拾遗</span></h1>
+      <p>抄过的句子都留在这里：诗词、语录、文章片段。想不起来的时候，翻一翻，就像又见了一面。</p>
+    </header>
+
+    <div class="poem-layout">
+      <aside class="poem-rail reveal" style="--d:.12s">
+        <div class="rail-card">
+          <h3><i class="fa-solid fa-hand-sparkles"></i>拈句</h3>
+          <div id="quote-filters" class="filters rail-filters"></div>
+          <button type="button" id="quote-random" class="btn btn-primary rail-random"><i class="fa-solid fa-dice"></i> 随机拈一句</button>
+
+          <div class="rail-divider"></div>
+          <div id="rail-today" class="rail-today"></div>
+
+          <div class="rail-divider"></div>
+          <p class="rail-stats-head"><i class="fa-solid fa-box-archive"></i>架上藏书</p>
+          <ul class="rail-stats" id="rail-stats"></ul>
+
+          <div class="rail-divider"></div>
+          <p class="rail-stats-head"><i class="fa-solid fa-feather"></i>作者名录</p>
+          <div id="rail-authors" class="rail-authors"></div>
+        </div>
+      </aside>
+
+      <div id="quote-list" class="quotes"></div>
+    </div>
+
+    <footer class="footer reveal" style="--d:.25s">
+      <div class="line"></div>
+      <p class="footer-verse">行到水穷处，坐看云起时。</p>
+      <p class="footer-note">王维 · 《终南别业》</p>
+      <p class="footer-copy">© <span id="year"></span> 邓泽廷 · 拾光小站</p>
+    </footer>
+
+  </main>
+
+  <script src="assets/main.js"></script>
+  <script src="assets/quotes.js"></script>
+
+</body>
+</html>

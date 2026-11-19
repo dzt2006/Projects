@@ -1,4 +1,15 @@
-# 大明纪事历史 (MingDynasty )
+# Projects — 项目合集
+
+这里存放我的项目 / My projects.
+
+| 项目 | 说明 | 目录 |
+| --- | --- | --- |
+| [拾光 · 云边小卖部](dztfun/README.md) | 手写静态个人博客 · dztfun.cyou | `dztfun/` |
+| [大明纪事历史](MingDynasty/) | 明朝历史科普网站 · ASP.NET | `MingDynasty/` |
+
+---
+
+## 大明纪事历史 (MingDynasty)
 
 > 我的第一个大型项目 — 一个关于中国明朝历史的科普网站。
 > This is my first big project — an educational website about Ming Dynasty history.
